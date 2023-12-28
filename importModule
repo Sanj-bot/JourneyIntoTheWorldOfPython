@@ -1,0 +1,71 @@
+#import my_module as mymod
+#from my_module import *
+import sys
+sys.path.append('/Users/user/Desktop')
+
+from my_module import find_index as fi,test
+courses=['History','Math','Physics','Compsci']
+#index=mymod.find_index(courses,'Physics')
+index=fi(courses,'Math')
+print("Index of History", index)
+#variable imported
+print(test)
+
+#print(sys.path) 
+#How is module searched
+#it checks location using a list sys.path
+#first it checks, same directory, then other
+
+#We are shifting our module to desktop
+#dont know why, but it still worked
+#go to environment variable variable name: PTHONPATH, address:Desktop
+#cmd>python>import my_module>from my_module import test
+#cmd: sys.path
+#check for your editor and python path
+#sys is part of standard library
+#print(test)
+
+
+
+
+import random
+random_courses=random.choice(courses)
+print(random_courses)
+
+
+
+import math
+rads=math.radians(90)
+print(rads,":","90")
+print(math.sin(rads))
+
+
+
+import datetime
+import calendar
+today=datetime.date.today()
+print(today)
+print(calendar.isleap(2017))
+
+
+
+
+import os
+print(os.getcwd())
+
+#printing library
+print(os.__file__)
+
+#In Python, there are some variables which are defined using double underscores,
+#and they are called Dunder or magic methods.
+#They are used for special purposes in the code, and
+#that is why they are referred to as special variables.
+#For example: __init__ , __add__ ,__len__ ,__file__ etc.
+
+import antigravity
+#opens a magazine
+#opens using browser
+#check python standard library
+
+
+
