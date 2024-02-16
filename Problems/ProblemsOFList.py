@@ -14,7 +14,7 @@ for item in list:
         print("Found it!!")
         break
 
-#reversing a list in python
+#reversing a list in python with some code
 
 list=[2,32,21,23,23]
 
