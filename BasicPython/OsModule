@@ -1,0 +1,52 @@
+import os
+
+
+# print(dir(os))
+# print("\n\n")
+# print(os.getcwd())
+#os.chdir('#path')
+# print(os.listdir())
+#create a new folder
+#folder='OS-Demo-2'
+#folders='OS-Demo-2/Sub-Dir-1'
+#os.mkdir(folder)
+#os.mkdir(folder)
+#os.makedirs(folders)
+#deleting folders
+# os.rmdir('')
+# os.removedirs('')
+#os.rename('osmodule.py','useless.py')
+#print(os.stat('useless.py'))
+# desktopPath='/Users/User/Desktop/'
+# os.chdir('/Users/user/Desktop')
+# for dirpath, dirnames, filenames in os.walk('/Users/user/Desktop'):
+#      #3 value tuple
+#     print('Current Path',dirpath)
+#     print('Directories:', dirnames)
+#     print('Files: ', filenames)
+#     print()
+
+
+# print(os.environ)
+# print(os.environ.get())
+# 'test.txt'
+# file_path=os.environ.get('HOME')+'test.txt'
+# print(file_path)
+#file_path=os.path.join(os.environ.get('HOME'),'test.txt')
+#with open(file_path,'w') as f:
+
+# print(os.path.basename('/tmp/test.txt'))
+# print(os.path.exists('/tmp/test.txt'))
+# print(os.path.isdir())
+# print(os.path.isfile())
+# print(os.path.splittext('tmpt/test.txt'))
+
+print(dir(os.path))
+print(dir(os.path.split()))
+
+
+
+
+
+
+
