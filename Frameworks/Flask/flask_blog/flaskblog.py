@@ -5,4 +5,4 @@ app=Flask(__name__)
 # decorators help in adding additional functionalites.
 @app.route("/") # forward slash is the root page.
 def hello():
-    return "<h1><center>Hello World!</center></h1>"
+    return "<h1><center>Hello World!</center></h1> <p>some content</p>"
