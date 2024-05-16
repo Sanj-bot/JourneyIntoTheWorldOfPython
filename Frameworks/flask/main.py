@@ -24,11 +24,6 @@ def generate_counts():
       "motorcycle": randint(1, 10),
       
   }
-
-
-
-
-
 while True:
   counts = generate_counts()
   c.execute("INSERT INTO vehicle_counts (auto, car, bus, truck, motorcycle) VALUES (?, ?, ?, ?, ?)", (counts["auto"], counts["car"], counts["bus"], counts["truck"], counts["motorcycle"]))
@@ -37,7 +32,6 @@ while True:
   data = c.fetchone()
   print(f"latest: {data}")
   
-
 if __name__ == '__main__':
   
   app.run(debug=True)
