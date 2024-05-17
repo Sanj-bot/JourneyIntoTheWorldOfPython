@@ -1,0 +1,37 @@
+from random import randint
+import sqlite3
+from flask import Flask, jsonify
+import time
+
+app = Flask(__name__)
+
+conn = sqlite3.connect('v_c.db')
+c = conn.cursor()
+
+c.execute('''CREATE TABLE IF NOT EXISTS vehicle_counts (timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, auto INTEGER, car INTEGER, bus INTEGER, truck INTEGER, motorcycle INTEGER)''')
+
+def generate_counts():
+    return {
+        "auto": randint(0, 10),
+        "car": randint(1, 10),
+        "bus": randint(1, 10),
+        "truck": randint(1, 10),
+        "motorcycle": randint(1, 10),
+    }
+
+def update_database():
+    while True:
+        counts = generate_counts()
+        c.execute("INSERT INTO vehicle_counts (auto, car, bus, truck, motorcycle) VALUES (?, ?, ?, ?, ?)", (counts["auto"], counts["car"], counts["bus"], counts["truck"], counts["motorcycle"]))
+        conn.commit()
+        time.sleep(60)  # Update counts every 60 seconds
+
+
+if __name__ == '__main__':
+    # Start a separate thread to continuously update the database
+    import threading
+    update_thread = threading.Thread(target=update_database)
+    update_thread.start()
+
+    # Start the Flask application
+    app.run(debug=True)

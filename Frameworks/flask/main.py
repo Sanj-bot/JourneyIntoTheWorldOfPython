@@ -13,7 +13,7 @@ conn = sqlite3.connect('v_c.db')
 c = conn.cursor()
 
 
-c.execute('''CREATE TABLE IF NOT EXISTS vehicle_counts (timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, auto INTEGER, car INTEGER, bus INTEGER, truck INTEGER, motorcycle INTEGER )''')
+c.execute('''CREATE TABLE IF NOT EXISTS v_c (timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, auto INTEGER, car INTEGER, bus INTEGER, truck INTEGER, motorcycle INTEGER )''')
 
 def generate_counts():
   return {
@@ -24,13 +24,19 @@ def generate_counts():
       "motorcycle": randint(1, 10),
       
   }
+  
+@app.route('/counts')
+def get_counts():
+    c.execute("SELECT * FROM v_c ORDER BY timestamp DESC LIMIT 10")
+    data = c.fetchall()
+    return jsonify(data)
 while True:
   counts = generate_counts()
-  c.execute("INSERT INTO vehicle_counts (auto, car, bus, truck, motorcycle) VALUES (?, ?, ?, ?, ?)", (counts["auto"], counts["car"], counts["bus"], counts["truck"], counts["motorcycle"]))
+  c.execute("INSERT INTO v_c (auto, car, bus, truck, motorcycle) VALUES (?, ?, ?, ?, ?)", (counts["auto"], counts["car"], counts["bus"], counts["truck"], counts["motorcycle"]))
   conn.commit()
-  c.execute("SELECT * FROM vehicle_counts ORDER BY timestamp DESC LIMIT 10")
+  c.execute("SELECT * FROM v_c ORDER BY timestamp DESC LIMIT 10")
   data = c.fetchone()
-  print(f"latest: {data}")
+  # print(f"latest: {data}")
   
 if __name__ == '__main__':
   
