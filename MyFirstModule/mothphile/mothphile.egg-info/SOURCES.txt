@@ -1,0 +1,5 @@
+setup.py
+mothphile.egg-info/PKG-INFO
+mothphile.egg-info/SOURCES.txt
+mothphile.egg-info/dependency_links.txt
+mothphile.egg-info/top_level.txt
